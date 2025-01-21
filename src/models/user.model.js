@@ -60,7 +60,7 @@ userschema.pre("save", async function (next) {
   if (!this.isModified("Passsword")) {
 
   } return next();
-  this.Passsword =  bcrypt.hash(this.Passsword, 10);
+  this.Passsword =  await bcrypt.hash(this.Passsword, 10);
   next();
 });
 userschema.methods.isPasswordCorrect = async function (password) {
